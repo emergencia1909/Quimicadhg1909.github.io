@@ -1,0 +1,78 @@
+
+  <hr class="divider-rule">
+
+  <!-- ============ RECURSOS ============ -->
+  <section id="recursos" class="section">
+    <span class="block-label">SECCIÓN 5</span>
+    <h2 class="section-title">Recursos multimedia</h2>
+    <p class="section-sub">Escanea el código QR de cada tarjeta o usa el enlace directo para profundizar en el tema.</p>
+    <div class="grid cols-5">
+      <div class="resource-card">
+        <span class="icon"><svg><use href="#icon-play"></use></svg></span>
+        <h3>¿Qué son las reacciones químicas?</h3>
+        <p>Una introducción visual al concepto y sus fundamentos.</p>
+        <div class="qr-box"><div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div><span>QR</span></div>
+        <a class="btn" href="https://www.youtube.com/results?search_query=que+son+las+reacciones+quimicas" target="_blank" rel="noopener">Ver en YouTube</a>
+      </div>
+      <div class="resource-card">
+        <span class="icon"><svg><use href="#icon-play"></use></svg></span>
+        <h3>Reacciones en la vida cotidiana</h3>
+        <p>Ejemplos reales que ocurren todos los días frente a nosotros.</p>
+        <div class="qr-box"><div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div><span>QR</span></div>
+        <a class="btn" href="https://www.youtube.com/results?search_query=reacciones+quimicas+en+la+vida+cotidiana" target="_blank" rel="noopener">Ver en YouTube</a>
+      </div>
+      <div class="resource-card">
+        <span class="icon"><svg><use href="#icon-play"></use></svg></span>
+        <h3>Experimentos de reacciones químicas</h3>
+        <p>Demostraciones prácticas y seguras para observar el cambio.</p>
+        <div class="qr-box"><div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div><span>QR</span></div>
+        <a class="btn" href="https://www.youtube.com/results?search_query=experimentos+de+reacciones+quimicas" target="_blank" rel="noopener">Ver en YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONCLUSIÓN ============ -->
+  <section id="conclusion" class="section conclusion-section">
+    <span class="block-label">CONCLUSIÓN</span>
+    <h2 class="section-title">Sin reacción, no hay equilibrio ni progreso.</h2>
+    <p class="lead-text">
+      Las reacciones químicas son procesos fundamentales que permiten la transformación de la materia y hacen posible la vida tal como la conocemos. Están presentes en la cocina, en el hogar, en la salud, en el medio ambiente y en la tecnología. Gracias a ellas obtenemos energía, producimos alimentos, combatimos enfermedades, desarrollamos nuevos materiales y aprovechamos los recursos naturales de manera más eficiente. Comprender las reacciones químicas nos ayuda a entender mejor el mundo que nos rodea y la importancia de la química en nuestra vida diaria.
+    </p>
+    <div class="quote-block">
+      <span class="icon"><svg><use href="#icon-quote"></use></svg></span>
+      <p>Desde el pan que comemos hasta el teléfono que usamos, las reacciones químicas transforman nuestro mundo todos los días.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="dash-bar">
+    <span>QUÍMICA APLICADA</span><span class="line"></span>
+    <span>FICHA WEB N.º 01</span><span class="line"></span>
+    <span>QUÍMICA APLICADA</span>
+  </div>
+  <p class="credits">Reacciones Químicas — Transformando la vida cotidiana</p>
+</footer>
+
+<a href="#inicio" class="back-to-top" aria-label="Volver arriba">
+  <svg><use href="#icon-arrow-up"></use></svg>
+</a>
+
+<script>
+  // resalta el enlace de navegación correspondiente a la sección visible
+  const links = document.querySelectorAll('.nav-link');
+  const targets = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const id = '#' + entry.target.id;
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  targets.forEach(t => { if(t) observer.observe(t); });
+</script>
+
+</body>
+</html>
