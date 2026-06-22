@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergencia 1909</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: clamp(14px, 2.2vw, 18px);
+        }
+
+        body {
+            margin: 0;
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: "Courier New", Courier, monospace;
+            text-align: center;
+            min-height: 100vh;
+            padding: clamp(15px, 5vw, 40px);
+            font-size: 1em;
+        }
+
+        /* Pantalla de contraseña */
+        #login {
+            margin-top: clamp(40px, 12vh, 120px);
+            min-height: 80vh;
+            cursor: pointer;
+        }
+
+        pre.ascii-title {
+            font-family: "Courier New", Courier, monospace;
+            color: #FFFFFF;
+            font-size: clamp(2px, 0.9vw, 5px);
+            line-height: 1.1;
+            text-shadow: 0 0 6px rgba(255,255,255,0.6);
+            margin: 0 auto clamp(15px, 4vh, 40px);
+            white-space: pre;
+            display: inline-block;
+            text-align: left;
+            cursor: default;
+        }
+
+        .input-box {
+            margin-top: clamp(15px, 4vh, 30px);
+            cursor: default;
+        }
+
+        input {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #FFFFFF;
+            padding: clamp(10px, 2vh, 16px) 10px;
+            font-size: 1em;
+            color: #FFFFFF;
+            border-radius: 0;
+            width: clamp(180px, 60vw, 260px);
+            text-align: center;
+            letter-spacing: clamp(4px, 1.5vw, 8px);
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #FFFFFF;
+            opacity: 0.35;
+            text-align: center;
+            letter-spacing: normal;
+        }
+
+        .texto-opaco {
+            opacity: 0.55;
+            font-size: 1em;
+        }
+
+        button {
+            margin-top: clamp(15px, 4vh, 30px);
+            padding: 2px 6px;
+            background-color: transparent;
+            border: none;
+            color: #FFFFFF;
+            font-size: 1em;
+            cursor: pointer;
+            font-family: "Courier New", Courier, monospace;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        /* Sección de números */
+        #numeros {
+            display: none;
+            margin-top: clamp(20px, 6vh, 50px);
+            min-height: 80vh;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-size: 1em;
+            font-weight: bold;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin: clamp(10px, 3vh, 25px) 0;
+        }
+
+        .lista {
+            width: 100%;
+            max-width: 420px;
+            margin: auto;
+            text-align: left;
+            margin-top: clamp(15px, 4vh, 30px);
+            border-top: 1px solid #444444;
+            cursor: default;
+        }
+
+        .contacto {
+            padding: clamp(10px, 3vh, 18px) 12px;
+            border-bottom: 1px solid #444444;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 1em;
+        }
+
+        .contacto:hover {
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        /* Sección Archivo / Casa */
+        .seccion-extra {
+            margin-top: clamp(30px, 8vh, 60px);
+            padding-top: 0;
+            cursor: default;
+        }
+
+        .seccion-extra a {
+            display: inline-block;
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 2px 6px;
+            font-size: 1em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+
+        .seccion-extra a:hover {
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        .seccion-extra a.archivo {
+            text-transform: none;
+        }
+
+        .casa {
+            margin-top: clamp(8px, 2vh, 14px);
+        }
+    </style>
+
+    <script>
+        let realPass = "";
+
+        function maskInput(e) {
+            const input = e.target;
+            const val = input.value;
+
+            if (val.length > realPass.length) {
+                const added = val.slice(realPass.length).replace(/[^0-9]/g, "");
+                realPass = (realPass + added).slice(0, 12);
+            } else {
+                realPass = realPass.slice(0, val.length);
+            }
+
+            input.value = "*".repeat(realPass.length);
+        }
+
+        function acceder() {
+            if (realPass === "654125875369") {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("numeros").style.display = "block";
+            } else {
+                alert("Código no válido");
+            }
+        }
+
+        function regresar() {
+            realPass = "";
+            location.reload();
+        }
+    </script>
+
+</head>
+<body>
+
+    <!-- PANTALLA DE CONTRASEÑA -->
+    <div id="login" onclick="window.location.href='https://www.instagram.com/dhg1909'">
+        <pre class="ascii-title">
+       6RIEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER     WEEEEEEEEEEEEEEEEEEEEOL      4QEEEEEEEEEEEEEEEEEEEEI     mEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEIN1r      
+    1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN    
+  dAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1  
+ 6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR 
+rAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6
+NAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAAN60000000000000000000000000000000v 
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAv                                    
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAEL    4RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAi                                      
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEdiii0EAAAAR     RAAAAAAAAAAAAAAAAAAAAAAWdiid6AAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAA1       iddddddddddddddddddddddddddddL  
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF     IAAAAR     RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAA      EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAi
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA      IAAAAR     RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAA      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA      IAAAAR     RAAAAAAAAAAAAAAAAAAAAAAA1909AAAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAA      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA      IAAAAR     RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAA      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA      IAAAAR     RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAA      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL     IAAAAR     RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAd      NAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+NAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAEF    VNAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAN                           mEAAAAAAAAAA
+mAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAEL                         0AAAAAAAAAA1
+ 1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAL                      jAAAAAAAAAAN 
+  6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR  
+    RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAAE      RAAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI    
+      mWIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR     RAAAAAAAAAAAAAAAAAAAAEF      CIAAAAAAAAAAAAAAAAAAAAE     iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEIRd      </pre>
+
+        <div class="input-box" onclick="event.stopPropagation()">
+            <input type="text" id="pass" placeholder="Contraseña" oninput="maskInput(event)" autocomplete="off" inputmode="numeric" maxlength="12">
+        </div>
+
+        <div onclick="event.stopPropagation()">
+            <button onclick="acceder()">Entrar</button>
+        </div>
+    </div>
+
+    <!-- PANTALLA DE NÚMEROS -->
+    <div id="numeros" onclick="regresar()">
+        <h1>Contactos</h1>
+
+        <div class="lista">
+
+            <div class="contacto" onclick="event.stopPropagation(); location.href='tel:+522283123524'">
+                <span><strong>David</strong></span><span class="texto-opaco">+52 228 312 3524</span>
+            </div>
+
+            <div class="contacto" onclick="event.stopPropagation(); location.href='tel:+522281567186'">
+                <span><strong>Adriana</strong></span><span class="texto-opaco">+52 228 156 7186</span>
+            </div>
+
+            <div class="contacto" onclick="event.stopPropagation(); location.href='tel:+522283611513'">
+                <span><strong>Mónica</strong></span><span class="texto-opaco">+52 228 361 1513</span>
+            </div>
+
+            <div class="contacto" onclick="event.stopPropagation(); location.href='tel:+522299848615'">
+                <span><strong>Eduardo</strong></span><span class="texto-opaco">+52 229 984 8615</span>
+            </div>
+
+            <div class="contacto" onclick="event.stopPropagation(); location.href='tel:+522284106817'">
+                <span><strong>Sergio</strong></span><span class="texto-opaco">+52 228 410 6817</span>
+            </div>
+
+            <div class="contacto" onclick="event.stopPropagation(); location.href='tel:+522281245180'">
+                <span><strong>Eduardo</strong></span><span class="texto-opaco">+52 228 124 5180</span>
+            </div>
+
+            <div class="contacto" onclick="event.stopPropagation(); location.href='tel:+522282972364'">
+                <span><strong>Héctor</strong></span><span class="texto-opaco">+52 228 297 2364</span>
+            </div>
+
+            <div class="contacto" onclick="event.stopPropagation(); location.href='tel:+522281476572'">
+                <span><strong>Óscar</strong></span><span class="texto-opaco">+52 228 147 6572</span>
+            </div>
+
+            <div class="contacto" onclick="event.stopPropagation(); location.href='tel:+522283632102'">
+                <span><strong>David</strong></span><span class="texto-opaco">+52 228 363 2102</span>
+            </div>
+
+            <div class="contacto" onclick="event.stopPropagation(); location.href='tel:+522281257340'">
+                <span><strong>Aldo</strong></span><span class="texto-opaco">+52 228 125 7340</span>
+            </div>
+
+            <div class="contacto" onclick="event.stopPropagation(); location.href='tel:+522281781492'">
+                <span><strong>Betsabe</strong></span><span class="texto-opaco">+52 228 178 1492</span>
+            </div>
+
+            <div class="contacto" onclick="event.stopPropagation(); location.href='tel:+522283412324'">
+                <span><strong>Gemma</strong></span><span class="texto-opaco">+52 228 341 2324</span>
+            </div>
+
+        </div>
+
+        <div class="seccion-extra">
+            <a class="archivo" href="https://drive.google.com/file/d/1h4k9gthAi7zyb1s84F9UYYbuzjpWoh0P/view?usp=sharing" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+                Archivo 1909
+            </a>
+
+            <div class="casa">
+                <a href="https://www.google.com.mx/maps/dir//19.497249,-96.852978" onclick="event.stopPropagation()">
+                    Casa
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
